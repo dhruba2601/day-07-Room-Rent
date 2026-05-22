@@ -12,15 +12,27 @@ function Rooms() {
         <p className="not-available">❌ Not available for couples</p>
       </div>
       <div className="rooms-grid">
-        {roomData.map((room, index) => (
-          <div className={`room-card reveal reveal-delay-${index + 1}`} key={room.id}>
-            <h3>{room.type}</h3>
-            <p>{room.category}</p>
-            <p>{room.floor}</p>
-            <p className="room-price">{room.price}</p>
-            <a href="#contact" className="room-btn">Book Now</a>
-          </div>
-        ))}
+        {roomData.map((room, index) => {
+          const message = `Hello, I'm interested in booking the ${room.type} (${room.category}, ${room.floor}) for ${room.price}.`;
+          const whatsappUrl = `https://wa.me/919365844130?text=${encodeURIComponent(message)}`;
+          
+          return (
+            <div className={`room-card reveal reveal-delay-${index + 1}`} key={room.id}>
+              <h3>{room.type}</h3>
+              <p>{room.category}</p>
+              <p>{room.floor}</p>
+              <p className="room-price">{room.price}</p>
+              <a 
+                href={whatsappUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="room-btn"
+              >
+                Book Now
+              </a>
+            </div>
+          );
+        })}
       </div>
     </section>
   )
