@@ -1,14 +1,14 @@
 function Reviews() {
   return (
     <section id="reviews">
-      <h2>What People Say</h2>
-      <div className="reviews-summary">
+      <h2 className="reveal">What People Say</h2>
+      <div className="reviews-summary reveal reveal-delay-1">
         <p className="reviews-rating">4.2</p>
         <div className="reviews-stars">⭐⭐⭐⭐⭐</div>
         <p className="reviews-count">Based on 11 Google Reviews</p>
       </div>
       <div className="reviews-grid">
-        <div className="review-card">
+        <div className="review-card reveal reveal-delay-1">
           <div className="review-header">
             <p className="review-name">Babita Kumari</p>
             <p className="review-stars">⭐⭐⭐⭐⭐</p>
@@ -17,7 +17,7 @@ function Reviews() {
           <p className="review-date">1 year ago · Google Review</p>
         </div>
 
-        <div className="review-card">
+        <div className="review-card reveal reveal-delay-2">
           <div className="review-header">
             <p className="review-name">Prahallad Nayak</p>
             <p className="review-stars">⭐⭐⭐⭐⭐</p>
@@ -26,7 +26,7 @@ function Reviews() {
           <p className="review-date">Long-term tenant · Verified Stay</p>
         </div>
 
-        <div className="review-card">
+        <div className="review-card reveal reveal-delay-3">
           <div className="review-header">
             <p className="review-name">Jyotsna Dogra</p>
             <p className="review-stars">⭐⭐⭐⭐⭐</p>

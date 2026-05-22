@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import Gallery from './components/Gallery'
 import Rooms from './components/Rooms'
 import Amenities from './components/Amenities'
+import Reviews from './components/Reviews'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
@@ -34,6 +35,7 @@ function App() {
       <Gallery />
       <Rooms />
       <Amenities />
+      <Reviews />
       <Contact />
       <Footer />
     </div>
