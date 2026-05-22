@@ -289,6 +289,7 @@ nav.scrolled {
   border-radius: 12px;
   border: 1px solid var(--primary);
   opacity: 0;
+  pointer-events: none;
   transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -335,6 +336,8 @@ nav.scrolled {
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
+  position: relative;
+  z-index: 2;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
