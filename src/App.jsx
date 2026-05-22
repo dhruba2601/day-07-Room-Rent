@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import CustomCursor from './components/CustomCursor'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Gallery from './components/Gallery'
@@ -32,6 +33,7 @@ function App() {
 
   return (
     <div>
+      <CustomCursor />
       <Navbar />
       <Hero />
       <Gallery />

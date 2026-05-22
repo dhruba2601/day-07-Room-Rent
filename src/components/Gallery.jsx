@@ -24,7 +24,7 @@ function Gallery() {
             key={item.id}
             onClick={() => setSelected(item)}
           >
-            <img src={item.src} alt={item.label} />
+            <img src={item.src} alt={item.label} loading="lazy" decoding="async" />
             <p className="gallery-label">{item.label}</p>
           </div>
         ))}
@@ -34,7 +34,7 @@ function Gallery() {
         <div className="lightbox" onClick={() => setSelected(null)}>
           <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
             <button className="lightbox-close" onClick={() => setSelected(null)}>✕</button>
-            <img src={selected.src} alt={selected.label} />
+            <img src={selected.src} alt={selected.label} decoding="async" />
             <p>{selected.label}</p>
           </div>
         </div>
