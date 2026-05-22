@@ -8,7 +8,9 @@ function Rooms() {
   return (
     <section id="rooms">
       <h2 className="reveal">Available Rooms</h2>
-      <p className="not-available reveal reveal-delay-1">❌ Not available for couples</p>
+      <div className="not-available-container reveal reveal-delay-1">
+        <p className="not-available">❌ Not available for couples</p>
+      </div>
       <div className="rooms-grid">
         {roomData.map((room, index) => (
           <div className={`room-card reveal reveal-delay-${index + 1}`} key={room.id}>
