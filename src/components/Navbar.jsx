@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -16,17 +17,42 @@ function Navbar() {
   }, [])
 
   return (
-    <nav className={isScrolled ? 'scrolled' : ''}>
-      <div className="nav-logo">
-        <h1>Keshab Room Rent</h1>
-        <p>North Guwahati, Assam</p>
+    <motion.nav 
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={`fixed top-0 left-0 w-full z-[1000] flex justify-between items-center transition-all duration-400 px-6 md:px-16 ${
+        isScrolled 
+          ? 'bg-cream/95 backdrop-blur-md shadow-sm border-b border-border py-4 text-dark' 
+          : 'bg-transparent py-8 text-white'
+      }`}
+    >
+      <div className="flex flex-col">
+        <h1 className="font-serif text-xl md:text-2xl font-bold tracking-tight leading-tight">
+          Keshab Room Rent
+        </h1>
+        <p className="text-[10px] md:text-xs tracking-[2px] uppercase text-primary font-medium mt-0.5">
+          North Guwahati, Assam
+        </p>
       </div>
-      <ul className="nav-links">
-        <li><a href="#rooms">Rooms</a></li>
-        <li><a href="#amenities">Amenities</a></li>
-        <li><a href="#contact">Contact</a></li>
+      
+      <ul className="flex items-center gap-6 md:gap-10 list-none">
+        {['Rooms', 'Amenities', 'Contact'].map((item) => (
+          <motion.li 
+            key={item}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <a 
+              href={`#${item.toLowerCase()}`} 
+              className="text-sm md:text-[0.95rem] font-semibold transition-colors duration-300 hover:text-primary"
+            >
+              {item}
+            </a>
+          </motion.li>
+        ))}
       </ul>
-    </nav>
+    </motion.nav>
   )
 }
 
