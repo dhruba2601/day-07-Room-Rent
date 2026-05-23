@@ -2085,19 +2085,20 @@ footer {
   }
   
   .chatbot-window {
-    position: fixed;
-    bottom: 0;
+    position: absolute;
+    bottom: 76px;
     right: 0;
-    width: 100vw;
-    height: 100vh;
-    height: -webkit-fill-available;
-    border-radius: 0;
-    transform: translateY(100%);
-    transform-origin: bottom center;
+    width: calc(100vw - 40px);
+    max-width: 360px;
+    height: 480px;
+    max-height: 70vh;
+    border-radius: 20px;
+    transform: translateY(20px) scale(0.95);
+    transform-origin: bottom right;
   }
   
   .chatbot-window.open {
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
   
   .chatbot-notification {
