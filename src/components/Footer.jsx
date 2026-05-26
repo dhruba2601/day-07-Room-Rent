@@ -13,7 +13,7 @@ function Footer() {
           Doul, Govinda Rd, Baruah Souk, North Guwahati, Assam 781030
         </a>
         <p className="footer-phone">📞 9365844130</p>
-        <p className="footer-note">Not available for couples</p>
+        <p className="footer-note">Not available for unmarried couples</p>
         <p className="footer-copy">© 2026 Keshab Room Rent. All rights reserved.</p>
       </div>
     </footer>

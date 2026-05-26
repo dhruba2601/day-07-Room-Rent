@@ -27,7 +27,7 @@ function Rooms() {
         className="not-available-container flex justify-center mb-12"
       >
         <p className="not-available bg-red-50 text-red-600 px-6 py-2 rounded-full font-semibold border border-red-100 shadow-sm text-sm">
-          ❌ Not available for couples
+          ❌ Not available for unmarried couples
         </p>
       </motion.div>
       
