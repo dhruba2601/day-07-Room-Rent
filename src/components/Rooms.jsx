@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion'
 
 const roomData = [
-  { id: 1, type: "Single Room", category: "Bachelor", floor: "Top Floor", price: "₹7,000/month" },
+  { id: 1, type: "Single Room", category: "Bachelor", floor: "Top Floor", price: "₹7,500/month" },
   { id: 2, type: "Shared Room", category: "Bachelor", floor: "Top Floor", price: "₹7,500/month" },
-  { id: 3, type: "Family Room", category: "Family", floor: "Ground Floor", price: "₹12,000/month" },
+  { id: 3, type: "Family Room", category: "Family", floor: "Ground Floor", price: "₹15,000/month" },
 ]
 
 function Rooms() {

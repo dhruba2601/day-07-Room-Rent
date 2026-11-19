@@ -4,6 +4,7 @@ const amenityData = [
   { id: 1, icon: "🚗", title: "Parking", description: "Safe and spacious parking available for residents" },
   { id: 2, icon: "💧", title: "Water Supply", description: "24/7 clean water supply throughout the building" },
   { id: 3, icon: "🚿", title: "Attached Bathroom", description: "Private attached bathroom with every room" },
+  { id: 4, icon: "📹", title: "CCTV Surveillance", description: "24/7 CCTV camera coverage for enhanced safety and security" },
 ]
 
 function Amenities() {
@@ -19,7 +20,7 @@ function Amenities() {
         Amenities
       </motion.h2>
       
-      <div className="amenities-grid grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
+      <div className="amenities-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto px-6">
         {amenityData.map((amenity, index) => (
           <motion.div 
             initial={{ opacity: 0, y: 30 }}

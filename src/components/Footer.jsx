@@ -1,8 +1,17 @@
+import Logo from './Logo'
+
 function Footer() {
   return (
     <footer>
       <div className="footer-content">
-        <p className="footer-name">Keshab Room Rent</p>
+        <div className="flex justify-center mb-2">
+          <Logo 
+            showText={true} 
+            textClass="text-white !text-xl md:!text-2xl" 
+            subTextClass="!text-primary-light"
+            iconSize="w-11 h-11 md:w-12 h-12" 
+          />
+        </div>
         <a 
           href="https://www.google.com/maps/place/Keshab(Room+Rent)/@26.1908949,91.7174035,17z/"
           target="_blank"

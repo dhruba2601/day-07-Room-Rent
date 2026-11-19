@@ -37,64 +37,13 @@ const renderMessageText = (text) => {
   })
 }
 
-const getAIResponse = (input) => {
-  const cleanInput = input.toLowerCase().trim()
-  
-  // Greeting response
-  if (cleanInput.includes('hello') || cleanInput.includes('hi') || cleanInput.includes('hey') || cleanInput.includes('sup') || cleanInput.includes('greeting') || cleanInput.includes('who are you') || cleanInput.includes('namaskar')) {
-    return "Namaskar! 🙏 Welcome to Keshab Room Rent, North Guwahati. I'm your virtual assistant, here to help you find the perfect room. You can ask me about room availability, pricing, amenities, location, or how to book. How may I assist you today? 😊"
-  }
-
-  // Off-topic deflection check
-  const offTopicKeywords = [
-    'weather', 'job', 'work', 'hire', 'employ', 'food delivery', 'restaurant', 
-    'politic', 'news', 'election', 'movie', 'sport', 'game', 'medical', 'doctor', 
-    'hospital', 'song', 'music', 'opinion', 'business', 'company'
-  ]
-  const isOffTopic = offTopicKeywords.some(keyword => cleanInput.includes(keyword))
-  
-  if (isOffTopic) {
-    return "I'm sorry, I can only assist with questions related to Keshab Room Rent — things like room availability, pricing, amenities, and how to book. For anything else, I'm afraid I won't be of much help! 😊 Is there anything room-related I can help you with?"
-  }
-
-  // 1. LOCATION
-  if (cleanInput.includes('location') || cleanInput.includes('address') || cleanInput.includes('where') || cleanInput.includes('find') || cleanInput.includes('map') || cleanInput.includes('directions') || cleanInput.includes('pincode') || cleanInput.includes('iit')) {
-    return "We are located in North Guwahati, Assam, close to the IIT Guwahati campus. You can view our exact location on Google Maps here: https://www.google.com/maps/place/Keshab(Room+Rent)/@26.1908949,91.7174035,17z/ 🙏";
-  }
-
-  // 2. ROOM TYPES
-  if (cleanInput.includes('type') || cleanInput.includes('single') || cleanInput.includes('sharing') || cleanInput.includes('shared') || cleanInput.includes('family') || cleanInput.includes('rooms')) {
-    return "We offer three room options:\n\n🛌 Single Room (Bachelor) — private room with more privacy.\n🤝 Sharing Room (Bachelor) — shared space, more budget-friendly.\n👨‍👩‍👧‍👦 Family Room (Family) — layout for families.\n\nAll rooms are clean, well-ventilated, and semi-furnished. For availability, please contact the owner directly! 🙏";
-  }
-
-  // 3. RENT & PRICING
-  if (cleanInput.includes('rent') || cleanInput.includes('price') || cleanInput.includes('pricing') || cleanInput.includes('cost') || cleanInput.includes('charge') || cleanInput.includes('deposit') || cleanInput.includes('pay') || cleanInput.includes('rate') || cleanInput.includes('electricity') || cleanInput.includes('water')) {
-    return "Our room rents are:\n\n🛌 Single Room (Bachelor): ₹7,000/month\n🤝 Sharing Room (Bachelor): ₹7,500/month\n👨‍👩‍👧‍👦 Family Room (Family): ₹12,000/month\n\nAdditional Details:\n\n💧 Water: Generally included in the rent.\n⚡ Electricity: Charged separately based on usage.\n🔒 Security Deposit: Required at move-in (fully refundable). 🙏";
-  }
-
-  // 4. AMENITIES
-  if (cleanInput.includes('amenit') || cleanInput.includes('facilit') || cleanInput.includes('wi-fi') || cleanInput.includes('wifi') || cleanInput.includes('kitchen') || cleanInput.includes('cook') || cleanInput.includes('bathroom') || cleanInput.includes('toilet') || cleanInput.includes('park') || cleanInput.includes('furniture')) {
-    return "Our rooms are semi-furnished and include basic furniture such as a bed, fan, and basic storage. Safe vehicle parking and shared bathroom/toilet facilities are available. Regarding Wi-Fi and kitchen/cooking access, availability may vary, so please confirm these with the owner directly — he'll be happy to help! 🙏";
-  }
-
-  // 5. RULES & POLICIES / SAFETY
-  if (cleanInput.includes('rules') || cleanInput.includes('policy') || cleanInput.includes('policies') || cleanInput.includes('guest') || cleanInput.includes('visitor') || cleanInput.includes('curfew') || cleanInput.includes('safety') || cleanInput.includes('safe') || cleanInput.includes('girl') || cleanInput.includes('female') || cleanInput.includes('clean')) {
-    return "We prioritize a safe, peaceful, and clean environment. Day visitors are welcome during reasonable hours, but rules for overnight guests must be discussed directly with the owner. The property is safe for all tenants, including ladies and female students. For detailed guidelines, please contact the owner directly — he'll be happy to help! 🙏";
-  }
-
-  // 6. BOOKING & CONTACT / AVAILABILITY
-  if (cleanInput.includes('book') || cleanInput.includes('enquir') || cleanInput.includes('contact') || cleanInput.includes('phone') || cleanInput.includes('whatsapp') || cleanInput.includes('number') || cleanInput.includes('call') || cleanInput.includes('visit') || cleanInput.includes('move-in') || cleanInput.includes('avail')) {
-    return "To book a room or check availability, please contact the owner directly at +91 9365844130 (Call or WhatsApp). We encourage in-person visits to see the rooms before finalizing! 🙏";
-  }
-
-  // General fallback for unmatched inputs
-  return "I'm sorry, I can only assist with questions related to Keshab Room Rent — things like room availability, pricing, amenities, and how to book. For the most accurate and up-to-date information, please contact the owner directly — he'll be happy to help! 🙏";
-}
-
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState(() => [
-    generateMessage('ai', "Namaskar! 🙏 Welcome to Keshab Room Rent, North Guwahati. I'm your virtual assistant, here to help you find the perfect room. You can ask me about room availability, pricing, amenities, location, or how to book. How may I assist you today? 😊")
+    generateMessage(
+      'ai',
+      "Namaskar! 🙏 Welcome to Keshab Room Rent, North Guwahati. I'm your AI assistant, powered by Gemini. You can ask me about our available rooms, monthly rent, amenities, house rules, or location. How may I assist you today? 😊"
+    )
   ])
   const [inputValue, setInputValue] = useState('')
   const [isTyping, setIsTyping] = useState(false)
@@ -108,27 +57,49 @@ export default function Chatbot() {
     }
   }, [messages, isTyping])
 
-  const handleSend = (textToSend) => {
-    if (!textToSend.trim()) return
+  const handleSend = async (textToSend) => {
+    const trimmed = textToSend?.trim()
+    // Prevent empty messages and duplicate submissions while a request is pending
+    if (!trimmed || isTyping) return
 
-    const newUserMessage = generateMessage('user', textToSend)
-
+    const newUserMessage = generateMessage('user', trimmed)
     setMessages((prev) => [...prev, newUserMessage])
     setInputValue('')
     setIsTyping(true)
     setShowSuggestions(false) // Hide suggestion options once a query has been sent
 
-    // Simulate AI thinking delay
-    setTimeout(() => {
-      const responseText = getAIResponse(textToSend)
-      const newAIMessage = generateMessage('ai', responseText)
+    try {
+      const response = await fetch('/.netlify/functions/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message: trimmed })
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data?.error || `Server responded with status ${response.status}`)
+      }
+
+      const replyText = data?.reply || "I'm sorry, I couldn't generate a response. Please contact the owner at +91 9365844130."
+      const newAIMessage = generateMessage('ai', replyText)
       setMessages((prev) => [...prev, newAIMessage])
+    } catch (err) {
+      console.error('Chat request error:', err)
+      const fallbackMsg = generateMessage(
+        'ai',
+        "I'm having trouble connecting to the server right now. For room inquiries or availability, please reach the owner directly at +91 9365844130 (Call or WhatsApp) 🙏"
+      )
+      setMessages((prev) => [...prev, fallbackMsg])
+    } finally {
       setIsTyping(false)
-    }, 1200)
+    }
   }
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && !isTyping) {
       handleSend(inputValue)
     }
   }
@@ -165,7 +136,6 @@ export default function Chatbot() {
 
         {/* Pulse rings for subtle attention */}
         {!isOpen && <span className="launcher-pulse"></span>}
-        
       </button>
 
       {/* Chat Window */}
@@ -185,7 +155,7 @@ export default function Chatbot() {
               <span>Keshab Room Rent • Online</span>
             </div>
           </div>
-          <button className="header-close-btn" onClick={toggleChat}>
+          <button className="header-close-btn" onClick={toggleChat} aria-label="Close chat window">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -242,7 +212,8 @@ export default function Chatbot() {
                   key={idx}
                   type="button"
                   className="suggestion-chip" 
-                  onClick={() => handleSend(sug.query)}
+                  onClick={() => !isTyping && handleSend(sug.query)}
+                  disabled={isTyping}
                 >
                   {sug.label}
                 </button>
@@ -256,15 +227,17 @@ export default function Chatbot() {
           <input
             type="text"
             className="chatbot-input"
-            placeholder="Ask about rooms, pricing, booking..."
+            placeholder={isTyping ? "Gemini is thinking..." : "Ask about rooms, pricing, booking..."}
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyPress}
+            disabled={isTyping}
           />
           <button 
             className="chatbot-send-btn" 
             onClick={() => handleSend(inputValue)}
-            disabled={!inputValue.trim()}
+            disabled={!inputValue.trim() || isTyping}
+            aria-label="Send message"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="22" y1="2" x2="11" y2="13"></line>
