@@ -202,7 +202,7 @@ function RulesModal({ isOpen, onClose }) {
                     className="inline-flex items-center justify-center gap-1.5 bg-[#c58f3e] hover:bg-[#996c27] text-white text-xs font-bold px-4 py-2 sm:py-2.5 rounded-full shadow-sm transition-all duration-300 hover:-translate-y-0.5 min-h-[38px]"
                   >
                     <span>📞</span>
-                    <span>Call Owner</span>
+                    <span>Call Mr. Keshab Baishya</span>
                   </a>
                   <a
                     href="https://wa.me/919365844130"

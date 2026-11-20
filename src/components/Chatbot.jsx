@@ -42,7 +42,7 @@ export default function Chatbot() {
   const [messages, setMessages] = useState(() => [
     generateMessage(
       'ai',
-      "Namaskar! 🙏 Welcome to Keshab Room Rent, North Guwahati. I'm your AI assistant, powered by Gemini. You can ask me about our available rooms, monthly rent, amenities, house rules, or location. How may I assist you today? 😊"
+      "Namaskar! 🙏 Welcome to Keshab Room Rent, North Guwahati. I'm your AI assistant for Mr. Keshab Baishya, powered by Gemini. You can ask me about our available rooms, monthly rent, amenities, house rules, or location. How may I assist you today? 😊"
     )
   ])
   const [inputValue, setInputValue] = useState('')
@@ -83,14 +83,14 @@ export default function Chatbot() {
         throw new Error(data?.error || `Server responded with status ${response.status}`)
       }
 
-      const replyText = data?.reply || "I'm sorry, I couldn't generate a response. Please contact the owner at +91 9365844130."
+      const replyText = data?.reply || "I'm sorry, I couldn't generate a response. Please contact the owner, Mr. Keshab Baishya, at +91 9365844130."
       const newAIMessage = generateMessage('ai', replyText)
       setMessages((prev) => [...prev, newAIMessage])
     } catch (err) {
       console.error('Chat request error:', err)
       const fallbackMsg = generateMessage(
         'ai',
-        "I'm having trouble connecting to the server right now. For room inquiries or availability, please reach the owner directly at +91 9365844130 (Call or WhatsApp) 🙏"
+        "I'm having trouble connecting to the server right now. For room inquiries or availability, please reach the owner, Mr. Keshab Baishya, directly at +91 9365844130 (Call or WhatsApp) 🙏"
       )
       setMessages((prev) => [...prev, fallbackMsg])
     } finally {
@@ -151,7 +151,7 @@ export default function Chatbot() {
               <div className="online-indicator"></div>
             </div>
             <div className="header-texts">
-              <h3>Keshab AI Assistant</h3>
+              <h3>Keshab Baishya AI Assistant</h3>
               <span>Keshab Room Rent • Online</span>
             </div>
           </div>

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 const DEFAULT_OWNERS = [
   {
     id: 'owner-1',
-    name: 'Keshab Baruah',
+    name: 'Mr. Keshab Baishya',
     role: 'Property Owner & Manager',
     desc: 'Dedicated to offering clean, peaceful, and highly accessible living spaces for students, bachelors, and families in North Guwahati. Reach out below for queries.',
     phone: '9365844130',
@@ -40,11 +40,12 @@ function OwnerCard({ owner, onUpdate, onDelete }) {
   }
 
   const getInitials = (name) => {
-    const parts = name.trim().split(/\s+/)
+    const clean = name.replace(/^Mr\.?\s+/i, '').trim()
+    const parts = clean.split(/\s+/)
     if (parts.length >= 2 && parts[0] && parts[parts.length - 1]) {
       return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
     }
-    return name.slice(0, 2).toUpperCase() || 'OW'
+    return clean.slice(0, 2).toUpperCase() || 'KB'
   }
 
   const maskedPhone = owner.phone.length > 5 
@@ -81,7 +82,7 @@ function OwnerCard({ owner, onUpdate, onDelete }) {
               type="text" 
               value={owner.name} 
               onChange={(e) => handleFieldChange('name', e.target.value)}
-              placeholder="e.g. Keshab Baruah"
+              placeholder="e.g. Mr. Keshab Baishya"
             />
           </div>
 

@@ -29,6 +29,9 @@ function Contact() {
         className="contact-box"
       >
         <p className="contact-name">Keshab Room Rent</p>
+        <p style={{ color: 'var(--primary)', fontWeight: 600, fontSize: '0.95rem', margin: '-4px 0 10px 0' }}>
+          Owner: Mr. Keshab Baishya
+        </p>
         <a 
           href="https://www.google.com/maps/place/Keshab(Room+Rent)/@26.1908949,91.7174035,17z/" 
           target="_blank" 
