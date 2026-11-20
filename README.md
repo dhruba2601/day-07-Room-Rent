@@ -1,6 +1,14 @@
 # Keshab Room Rent — Premium Living in North Guwahati
 
-A premium, modern web application for **Keshab Room Rent**, showcasing available room styles, features, and resident reviews. Located in Baruah Souk, North Guwahati (near the IIT Guwahati campus), this site offers an optimized, high-fidelity experience for prospective bachelors, students, and families looking for accommodations.
+A premium, modern web application for **Keshab Room Rent**, owned and managed by **Mr. Keshab Baishya**, showcasing available room styles, features, and resident reviews. Located in Baruah Souk, North Guwahati (near the IIT Guwahati campus), this site offers an optimized, high-fidelity experience for prospective bachelors, students, and families looking for accommodations.
+
+---
+
+## 📸 Website Preview
+
+![Keshab Room Rent Website Preview](public/images/website-preview.png)
+
+*The screenshot above showcases the Keshab Room Rent homepage and its interactive Gemini-powered AI chatbot (`Keshab Baishya AI Assistant`), answering prospective tenants with verified room rates, house rules, and direct owner booking contact.*
 
 ---
 
@@ -22,10 +30,10 @@ This project was upgraded to use a state-of-the-art interactive front-end pipeli
 3. **Amenities & Badges:** A responsive list showcasing shared, parking, and building utilities.
 4. **Lightbox Gallery Modal:** A grid of property photos with scale-and-fade animation overlays during entry/exit transitions.
 5. **AI Chatbot Assistant:**
+   * **Google Gemini AI Integration:** Live conversational serverless backend (`netlify/functions/chat.js`) powered by Google Gemini, providing verified property facts and direct booking access to the owner (**Mr. Keshab Baishya**).
    * **Vanishing Options:** Interactive suggestion chips that automatically vanish from the view once the user has sent their first query.
-   * **Info Isolation:** Strict responses containing *only* requested details (e.g. price questions return rents only, location questions return map link only).
    * **Scroll Prevention:** Prevents Lenis scroll conflicts using `data-lenis-prevent` for smooth, uninterrupted chat log tracking.
-6. **Owner Profile Dashboard:** An administrative co-owner profile display with local storage sync, text mask security toggles, and live profiles editor.
+6. **Owner Profile Dashboard:** Property owner profile display for **Mr. Keshab Baishya** with local storage sync, text mask security toggles, and live profiles editor.
 7. **SEO Optimization:** Compelling description tags, semantic layout markup, and performance load speed optimizations.
 
 ---
