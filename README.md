@@ -4,7 +4,7 @@ A premium, modern web application for **Keshab Room Rent**, owned and managed by
 
 ---
 
-## 📸 Website Preview
+## Website Preview
 
 ![Keshab Room Rent Website Preview](public/images/website-preview.png)
 
